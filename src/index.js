@@ -18,7 +18,7 @@ function returnFirstArgument(arg) {
 function defaultParameterValue(a, b) {
     var b = 100;
     var result = a + b;
-    return (result);
+    return result;
 }
 
 /*
@@ -27,13 +27,13 @@ function defaultParameterValue(a, b) {
  Функция должна возвращать все переданные в нее аргументы в виде массива
  Количество переданных аргументов заранее неизвестно
  */
- function returnArgumentsArray() {
-     var result = [];
-     for ( var i = 0; i < arguments.length; i++) {
-         result[i] = arguments[i];
-     }
-     return(result);
- }
+function returnArgumentsArray() {
+    var result = [];
+    for ( var i = 0; i < arguments.length; i++) {
+        result[i] = arguments[i];
+    }
+    return result;
+}
 
 /*
  Задание 4:
@@ -41,7 +41,7 @@ function defaultParameterValue(a, b) {
  Функция должна принимать другую функцию и возвращать результат вызова переданной функции
  */
 function returnFnResult(fn) {
-    return(fn);
+    return fn();
 }
 
 /*
@@ -52,7 +52,7 @@ function returnFnResult(fn) {
  */
  function returnCounter(number = 0) {
      var f = function () {
-         number++;
+         ++number;
          return number;
      }
      return f();
@@ -64,9 +64,12 @@ function returnFnResult(fn) {
  Функция должна принимать другую функцию (F) и некоторое количество дополнительных аргументов
  Функция должна привязать переданные аргументы к функции F и вернуть получившуюся функцию
  */
-function bindFunction(f) {
-
-}
+function bindFunction(f, arg1, arg2) {
+    var f = function(bindFunction.arguments) {
+      return f;
+    }
+    return f();
+};
 
 export {
     returnFirstArgument,
