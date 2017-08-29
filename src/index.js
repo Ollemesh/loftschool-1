@@ -23,9 +23,6 @@ function isAllTrue(array, fn(){
     } else {
         return false;
     }
-    
-}
-
 /*
  Задача 2:
  Функция принимает массив и фильтрующую фукнцию и должна вернуть true или false
@@ -35,6 +32,7 @@ function isAllTrue(array, fn(){
  - fn не является функцией (с текстом "fn is not a function")
  Зарпещено использовать встроенные методы для работы с массивами
  */
+
 function isSomeTrue(array, fn(){
     for array (var = 0; i < array.lenght; i++){
         if array[i] = true {
@@ -49,7 +47,6 @@ function isSomeTrue(array, fn(){
     } else {
         return false;
     }
-}
 
 /*
  Задача 3:
