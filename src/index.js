@@ -9,20 +9,29 @@
  - fn не является функцией (с текстом "fn is not a function")
  Зарпещено использовать встроенные методы для работы с массивами
  */
-function isAllTrue(array, fn(){
-    for array (var = 0; i < array.lenght; i++){
-        if array[i] = true {
-            return true;
-        } else {
-            return false
-        }
+function isAllTrue(array, fn) {
+  if (typeof fn !== 'function') {
+    throw new Error('fn is not a function')
+  }  else {
+    fn(); {
+      for ( i = 0; i < array.length; i++){
+            if (array[i] == undefined) {
+              throw new Error('empty array')
+            } else {
+              return true;
+            }
+      }
     }
-}) {
-    if fn() = true {
-        return true
-    } else {
-        return false;
-    }
+  }
+
+  return fn()
+}
+try {
+  isAllTrue();
+}
+catch(e) {
+  console.log(e.message)
+}
 /*
  Задача 2:
  Функция принимает массив и фильтрующую фукнцию и должна вернуть true или false
@@ -57,13 +66,12 @@ function isSomeTrue(array, fn(){
  - fn не является функцией (с текстом "fn is not a function")
  */
 function returnBadArguments(fn) {
-    var arg;
-    for arguments (var = 0; i < array.lenght; i++){
-        if i > 0 {
-            fn(arguments[i])
-        }
+    var arg
+    for ( var a = 0; a < arguments.length; a++ ) {
+      if arg[a] > 0 {
+        fn(arg[a]);
+      }
     }
-    return
 }
 
 /*
@@ -81,14 +89,17 @@ function returnBadArguments(fn) {
  - какой-либо из аргументов div является нулем (с текстом "division by 0")
  */
 function calculator(number = 0) {
-    var calc{
+    return calc {
         sum: number + arguments,
         dif: number + arguments,
         div: number / arguments,
         mul: number * arguments;
     }
-    return calc()
+    //return calc()
 }
+
+let calc = calculator();
+calc.sum();
 
 export {
     isAllTrue,
