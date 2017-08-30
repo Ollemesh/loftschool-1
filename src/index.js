@@ -10,22 +10,25 @@
  Зарпещено использовать встроенные методы для работы с массивами
  */
 function isAllTrue(array, fn) {
-  if (typeof fn !== 'function') {
-    throw new Error('fn is not a function')
-  }  else {
-    fn(); {
-      for ( i = 0; i < array.length; i++){
-            if (array[i] == undefined) {
-              throw new Error('empty array')
-            } else {
-              return true;
-            }
-      }
+    var result;
+    if ( !Array.isArray(array) || array.length < 1 ){
+        throw new Error('empty array')
     }
+    if ( typeof fn !== 'function') {
+        throw new Error('fn is not a function')
+    }
+    for ( var i = 0; i < array.length; i++ ) {
+        fn(array[i]);
+        if ( fn(array[i]) = true ) {
+            result = true;
+        } else {
+            result = false;
+            break;
+        }
+        
+    }
+    return result;
   }
-
-  return fn()
-}
 try {
   isAllTrue();
 }
@@ -43,35 +46,54 @@ catch(e) {
  */
 
 function isSomeTrue(array, fn(){
-    for array (var = 0; i < array.lenght; i++){
-        if array[i] = true {
-            return true;
+    var result;
+    if ( !Array.isArray(array) || array.length < 1 ){
+        throw new Error('empty array')
+    }
+    if ( typeof fn !== 'function') {
+        throw new Error('fn is not a function')
+    }
+    for ( var i = 0; i < array.length; i++ ) {
+        fn(array[i]);
+        if ( fn(array[i]) = true ) {
+            result = true;
+            break;
         } else {
-            return false
+            result = false;
         }
+        
     }
-}) {
-    if fn() = true {
-        return true
-    } else {
-        return false;
-    }
-
+    return result;
+  }
+try {
+  isSomeTrue();
+}
+catch(e) {
+  console.log(e.message)
+}
 /*
  Задача 3:
  Функция принимает заранее неизветсное количество аргументов, первым из которых является функция fn
- Функция должна поочередно запусти fn для каждого переданного аргумента (кроме самой fn)
+ Функция должна поочередно запустить fn для каждого переданного аргумента (кроме самой fn)
  Функция должна вернуть массив аргументов, для которых fn выбросила исключение
  Необходимо выбрасывать исключение в случаях:
  - fn не является функцией (с текстом "fn is not a function")
  */
 function returnBadArguments(fn) {
-    var arg
-    for ( var a = 0; a < arguments.length; a++ ) {
-      if arg[a] > 0 {
-        fn(arg[a]);
+    if ( typeof fn !== 'function') {
+        throw new Error('fn is not a function')
+    }
+    for ( var i = 0; i < arguments.length; i++ ) {
+      if arguments[i] > 0 {
+        fn(arguments[i]);
       }
     }
+}
+try {
+  returnBadArguments();
+}
+catch(e) {
+  console.log(e.message)
 }
 
 /*
@@ -89,17 +111,47 @@ function returnBadArguments(fn) {
  - какой-либо из аргументов div является нулем (с текстом "division by 0")
  */
 function calculator(number = 0) {
-    return calc {
-        sum: number + arguments,
-        dif: number + arguments,
-        div: number / arguments,
-        mul: number * arguments;
+    if( typeof number !== 'number'){
+        throw new Error('number is not a number')
     }
-    //return calc()
+    
+    return calc {
+        sum: function() {
+            for (var i = 1; i < arguments.length; i++){
+                number - arguments[i]
+            }
+            return number;
+        },
+        dif: function() {
+            for (var i = 1; i < arguments.length; i++){
+                number + arguments[i]
+            }
+            return number;
+        },
+        div: function() {
+            for (var i = 1; i < arguments.length; i++){
+                number / arguments[i]
+            }
+            return number;
+        },
+        mul: function() {
+            for (var i = 1; i < arguments.length; i++){
+                number * arguments[i]
+            }
+            return number;
+        };
+    }
 }
 
 let calc = calculator();
-calc.sum();
+try {
+    calc();
+}
+catch(e){
+    console.log(e.message);
+}
+
+
 
 export {
     isAllTrue,
