@@ -25,7 +25,7 @@ function isAllTrue(array, fn) {
             result = false;
             break;
         }
-        
+
     }
     return result;
   }
@@ -61,7 +61,7 @@ function isSomeTrue(array, fn(){
         } else {
             result = false;
         }
-        
+
     }
     return result;
   }
@@ -79,22 +79,31 @@ catch(e) {
  Необходимо выбрасывать исключение в случаях:
  - fn не является функцией (с текстом "fn is not a function")
  */
-function returnBadArguments(fn) {
-    if ( typeof fn !== 'function') {
-        throw new Error('fn is not a function')
+
+
+ function returnBadArguments(fn) {
+    if (typeof fn !== 'function') {
+        throw new Error('fn is not a function');
     }
-    for ( var i = 0; i < arguments.length; i++ ) {
-      if arguments[i] > 0 {
-        fn(arguments[i]);
-      }
+    let argsArray = [];
+
+    for (var i = 0; i < arguments.length; i++) {
+        argsArray.push(arguments[i]);
     }
+    argsArray = argsArray.slice(1);
+    let result = [];
+
+    for (var i = 0; i < argsArray.length; i++) {
+        try {
+            fn(argsArray[i]);
+        } catch (e) {
+            result.push(argsArray[i])
+        }
+    }
+
+    return result;
 }
-try {
-  returnBadArguments();
-}
-catch(e) {
-  console.log(e.message)
-}
+
 
 /*
  Задача 4:
@@ -114,36 +123,38 @@ function calculator(number = 0) {
     if( typeof number !== 'number'){
         throw new Error('number is not a number')
     }
-    
-    return calc {
+
+    return {
         sum: function() {
             for (var i = 1; i < arguments.length; i++){
-                number - arguments[i]
+                number -= arguments[i];
+                return number;
             }
-            return number;
         },
         dif: function() {
             for (var i = 1; i < arguments.length; i++){
-                number + arguments[i]
+                number += arguments[i];
+                return number;
             }
-            return number;
         },
         div: function() {
             for (var i = 1; i < arguments.length; i++){
-                number / arguments[i]
+                if ( arguments[i] = 0 ) {
+                    throw new Error('division by 0')
+                } else {
+                  number /= arguments[i];
+                  return number;
+                }
             }
-            return number;
         },
         mul: function() {
             for (var i = 1; i < arguments.length; i++){
-                number * arguments[i]
+                number *= arguments[i];
+                return number;
             }
-            return number;
-        };
+        }
     }
 }
-
-let calc = calculator();
 try {
     calc();
 }
