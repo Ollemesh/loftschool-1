@@ -16,7 +16,7 @@ function forEach(array, fn) {
  Напишите аналог встроенного метода map для работы с массивами
  */
 function map(array, fn) {
-    var newArray;
+    var newArray = [];
     for(var i = 0; i < array.length; i++){
         fn(array[i], i, array){
             newArray.push array[i]
@@ -29,6 +29,34 @@ function map(array, fn) {
  Напишите аналог встроенного метода reduce для работы с массивами
  */
 function reduce(array, fn, initial) {
+    if (array.length == 0 && initialValue == 'undefind') {
+        throw new Error('TypeError');
+    } else if ( (array.length == 1 && initialValue == 'undefind') || (array.length == 1 && initialValue !== 'undefind' )) {
+        return array;
+    } else {
+        return value = [];
+        for(var i = 0; i < array.length; i++){
+            fn(previousValue, currentValue, index, array, initial){
+                if (initialValue !== 'undefind'){
+                    previousValue = initialValue
+                    currentValue = array[0];
+                } else { 
+                    previousValue = array[i]
+                    currentValue = array[i+1];
+                }
+                previousValue + currentValue;
+                return value;
+
+            }
+        }
+    }
+    
+}
+try{
+    reduce();
+}
+catch(e){
+    console.log(e.message)
 }
 
 /*
@@ -50,7 +78,7 @@ function deleteProperty(obj, prop) {
 function hasProperty(obj, prop) {
     if ('prop' in obj) {
         return true;
-    } elsr {
+    } else {
         return false;
     }
 }
