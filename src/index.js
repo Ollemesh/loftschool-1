@@ -8,7 +8,7 @@ function forEach(array, fn) {
     for(var i = 0; i < array.length; i++){
         fn(array[i], i, array);
     }
-    
+
 }
 
 /*
@@ -31,16 +31,16 @@ function map(array, fn) {
 function reduce(array, fn, initial) {
     if (array.length == 0 && initialValue == 'undefind') {
         throw new Error('TypeError');
-    } else if ( (array.length == 1 && initialValue == 'undefind') || (array.length == 1 && initialValue !== 'undefind' )) {
+    } else if ( (array.length == 1 && )) {
         return array;
     } else {
-        return value = [];
+        var value = [];
         for(var i = 0; i < array.length; i++){
             fn(previousValue, currentValue, index, array, initial){
                 if (initialValue !== 'undefind'){
                     previousValue = initialValue
                     currentValue = array[0];
-                } else { 
+                } else {
                     previousValue = array[i]
                     currentValue = array[i+1];
                 }
@@ -49,8 +49,9 @@ function reduce(array, fn, initial) {
 
             }
         }
+        return value
     }
-    
+
 }
 try{
     reduce();
