@@ -51,14 +51,21 @@ function prepend(what, where) {
  * т.к. следующим соседом этих элементов является элемент с тегом P
  */
 function findAllPSiblings(where) {
-	var children = where.children;
-	var arr = [];
-	for ( var = i; i < children.length; i++ ){
-		arr.push children[i]
-	}
+	var elem = where.firstElementChild;
+    var result = [];
+    function find () {
+        if (elem === where.lastElementChild) {
+            return result;
+        } else if (elem.nextElementSibling.tagName === 'P') {
+            result.push this;
+        } else {
+            elem = this.nextElementSibling;
+            find();
+        }
+    }
+    return result;
+    
 }
-
-123
 
 /**
  * Функция должна перебрать все дочерние узлы типа "элемент" внутри where
@@ -92,6 +99,8 @@ function findError(where) {
  * должно быть преобразовано в <div></div><p></p>
  */
 function deleteTextNodes(where) {
+    where.children.removeText();
+    
 }
 
 /**
@@ -105,6 +114,13 @@ function deleteTextNodes(where) {
  * должно быть преобразовано в <span><div><b></b></div><p></p></span>
  */
 function deleteTextNodesRecursive(where) {
+    for (var i = 0; i < where.children.length; i++) {
+        if( this.nodeType == 3 ){
+            this.remove();
+        } else if(this.nodeType == 1) {
+            this.removeText();
+        }
+    }
 }
 
 /**
