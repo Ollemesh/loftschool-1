@@ -18,10 +18,9 @@ function forEach(array, fn) {
 function map(array, fn) {
     var newArray = [];
     for(var i = 0; i < array.length; i++){
-        fn(array[i], i, array){
-            newArray.push array[i]
-        }
+      newArray.push( fn(array[i], i, array) );
     }
+    return newArray
 }
 
 /*
@@ -31,23 +30,12 @@ function map(array, fn) {
 function reduce(array, fn, initial) {
     if (array.length == 0 && initialValue == 'undefind') {
         throw new Error('TypeError');
-    } else if ( (array.length == 1 && )) {
+    } else if ( array.length == 1 ) {
         return array;
     } else {
         var value = [];
         for(var i = 0; i < array.length; i++){
-            fn(previousValue, currentValue, index, array, initial){
-                if (initialValue !== 'undefind'){
-                    previousValue = initialValue
-                    currentValue = array[0];
-                } else {
-                    previousValue = array[i]
-                    currentValue = array[i+1];
-                }
-                previousValue + currentValue;
-                return value;
-
-            }
+          value.push( fn(previousValue, currentValue, index, array, initial));
         }
         return value
     }
@@ -128,7 +116,7 @@ function slice(array, from, to) {
     fn() {
          for(var i = 0; i < array.length; i++){
              if (i == from && i < to){
-                 newArray.push (array[i]);
+                 newArray.push(array[i]);
              }
          }
     }

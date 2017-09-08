@@ -64,7 +64,7 @@ function findAllPSiblings(where) {
         }
     }
     return result;
-    
+
 }
 
 /**
@@ -99,8 +99,15 @@ function findError(where) {
  * должно быть преобразовано в <div></div><p></p>
  */
 function deleteTextNodes(where) {
-    where.children.removeText();
-    
+	var nodes = where.childNodes;
+	for (var i = 0; i < nodes.length; i++) {
+		if ( nodes[i].nodeType = 1) {
+			where.removeChild(nodes[i])
+		} else {
+			nodes[i].removeText();
+		}
+	}
+	return nodes;
 }
 
 /**
