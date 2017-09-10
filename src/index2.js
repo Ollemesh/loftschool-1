@@ -57,7 +57,7 @@ function findAllPSiblings(where) {
         if (elem === where.lastElementChild) {
             return result;
         } else if (elem.nextElementSibling.tagName === 'P') {
-            result.push this;
+            result.push(this);
         } else {
             elem = this.nextElementSibling;
             find();
@@ -122,12 +122,9 @@ function deleteTextNodes(where) {
  */
 function deleteTextNodesRecursive(where) {
     for (var i = 0; i < where.children.length; i++) {
-        if( this.nodeType == 3 ){
-            this.remove();
-        } else if(this.nodeType == 1) {
-            this.removeText();
-        }
+        nodes[i].removeText();
     }
+    return nodes;
 }
 
 /**

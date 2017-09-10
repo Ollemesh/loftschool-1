@@ -35,7 +35,7 @@ function reduce(array, fn, initial) {
     } else {
         var value = [];
         for(var i = 0; i < array.length; i++){
-          value.push( fn(previousValue, currentValue, index, array, initial));
+          value.push( fn(previousValue, currentValue, index, array, initial)());
         }
         return value
     }
